@@ -1,0 +1,114 @@
+Instalação do Banco de Dados Zabbix em Ubuntu Server 24.04
+
+Pré-requisito
+Defina um IP estático no Linux
+Esteja logado como root
+
+------------Banco de Dados Postgresql---------------------------
+
+--Atualiza o SO e os pacotes
+apt update && sudo apt upgrade -y
+
+--Instala o PostgreSQL
+apt install postgresql postgresql-contrib -y
+
+--Configuração inicial do PostgreSQL
+sudo -u postgres psql
+
+\password postgres
+Digite nova senha para postgres: 92@hJD5sgZf4
+Digite-a novamente: 92@hJD5sgZf4
+
+CREATE EXTENSION adminpack;
+
+\q 
+
+
+sed -i '/postgres.*peer/s/peer/md5/' /etc/postgresql/16/main/pg_hba.conf
+sed -i '0,/local\s*all\s*all\s*peer/s/peer/md5/' /etc/postgresql/16/main/pg_hba.conf
+
+systemctl restart postgresql
+systemctl enable postgresql
+
+
+---Instala os repositorios do zabbix
+wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-2+ubuntu24.04_all.deb
+dpkg -i zabbix-release_7.0-2+ubuntu24.04_all.deb
+apt update
+
+---Cria base zabbix no PostgreSQL
+su - postgres
+createuser --pwprompt zabbix
+Digite a senha para a nova role:  C@a0jJ%U31C4
+Digite-a novamente: C@a0jJ%U31C4
+Senha: 92@hJD5sgZf4
+ 
+createdb -O zabbix zabbix
+Senha: 92@hJD5sgZf4
+
+exit
+
+
+apt install zabbix-sql-scripts
+
+
+zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | psql -U zabbix -d zabbix &>/dev/null
+Senha para usuário zabbix: : C@a0jJ%U31C4
+exit
+
+
+vim /etc/postgresql/16/main/postgresql.conf
+listen_addresses = '*'
+
+
+vim /etc/postgresql/16/main/pg_hba.conf
+host    all             all              0.0.0.0/0                       md5
+host    all             all              ::/0                            md5
+host    all             all             0.0.0.0/0               scram-sha-256
+
+
+
+systemctl restart postgresql
+
+systemctl status postgresql
+
+
+OBS: VERIFIQUE A DATA E HORA DO SERVIDOR SE ESTAO SINCRONIZADOS COM NTP.br
+
+timedatectl set-timezone America/Sao_Paulo
+
+apt install -y ntpdate
+
+ntpdate -u a.st1.ntp.br
+
+
+---Tuning
+#-----------------------------------------
+# 4GB de Memoria RAM
+max_connections = 500
+shared_buffers = 1GB
+work_mem = 16MB
+maintenance_work_mem = 128MB
+max_wal_size = 1GB
+min_wal_size = 256MB
+effective_cache_size = 2GB
+ 
+#-----------------------------------------
+# 8GB de Memoria RAM
+max_connections = 1000
+shared_buffers = 2GB
+work_mem = 32MB
+maintenance_work_mem = 512MB
+max_wal_size = 2GB
+min_wal_size = 512MB
+effective_cache_size = 4GB
+ 
+#-----------------------------------------
+# 16GB de Memoria RAM
+max_connections = 2000
+shared_buffers = 4GB
+work_mem = 64MB
+maintenance_work_mem = 1GB
+max_wal_size = 4GB
+min_wal_size = 1GB
+effective_cache_size = 8GB

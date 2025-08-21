@@ -8,7 +8,7 @@ Procedimento para executar um script quando é disparado uma trigger
 
 
 2 - Reiniciar o serviço do Zabbix Agent
-    systemctl restart zabbix-agent
+systemctl restart zabbix-agent
 
     
 3 - Adicionar o usuario Zabbix como sudo

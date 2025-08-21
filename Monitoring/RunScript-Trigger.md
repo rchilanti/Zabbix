@@ -33,6 +33,9 @@ Adicionar a linha: zabbix ALL=NOPASSWD: ALL
 
 <img width="258" height="246" alt="image" src="https://github.com/user-attachments/assets/b0f64d01-45aa-4477-8e44-ea655a14e640" />
 
+<br>
+<br>
+<br>
 
 ---Na Console do Zabbix, acessar:
 

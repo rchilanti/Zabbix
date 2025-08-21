@@ -5,8 +5,7 @@ Configuração do host
 
 
 ---Macros que devem ser configuradas no Template padrão VMware Hypervisor
-
-Paga capturar o UUID, acessar o ESXI via SSH e executar o comando:
+Para capturar o UUID, acessar o ESXI via SSH e executar o comando:
 vim-cmd hostsvc/hostsummary | grep uuid
 
 <img width="1038" height="375" alt="image" src="https://github.com/user-attachments/assets/621130be-f5dd-47d7-9245-81f8092bc6e1" />

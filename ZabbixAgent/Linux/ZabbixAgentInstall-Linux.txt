@@ -1,21 +1,24 @@
 --Baixa o pacote e instala (Zabbix Agent Versão 7)
 
-Ubuntu 20.04
+-Ubuntu 20.04
 wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu20.04_all.deb && dpkg -i zabbix-release_latest_7.0+ubuntu20.04_all.deb && apt update && apt install zabbix-agent -y
 
-Ubuntu 22.04
+-Ubuntu 22.04
 wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb && dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb && apt update && apt install zabbix-agent -y
 
-Ubuntu 24.04
+-Ubuntu 24.04
 wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu24.04_all.deb && dpkg -i zabbix-release_latest_7.0+ubuntu24.04_all.deb && apt update && apt install zabbix-agent -y
 
-Oracle Linux 9
+-Oracle Linux 9
 rpm -Uvh https://repo.zabbix.com/zabbix/7.0/oracle/9/x86_64/zabbix-release-latest-7.0.el9.noarch.rpm && dnf clean all && dnf install zabbix-agent -y
 
 
 ---Adiciona o IP do zabbix Server ou Proxy e o hostname no arquivo conf
 
+-Alterar para o IP do seu Zabbix Server ou Proxy
 sed -i "/^Server=/c\Server=192.168.1.50" /etc/zabbix/zabbix_agentd.conf && sed -i "/^ServerActive=/c\ServerActive=192.168.1.50" /etc/zabbix/zabbix_agentd.conf
+
+-Este comando nao precisa adicionar o hostname, ele já pega o automaticamente a variável do hostname do SO
 sed -i "s/^Hostname=/\#Hostname=/" /etc/zabbix/zabbix_agentd.conf && echo -ne "Hostname=$(hostname)\n" >> /etc/zabbix/zabbix_agentd.conf
 
 ------------------------------------------------------------
@@ -31,6 +34,6 @@ Hostname=
 
 ------------------------------------------------------------
 
-Inicia o serviço e adiciona o serviço no startup do SO
+Inicia o serviço e adiciona no startup do SO
 
 systemctl restart zabbix-agent && systemctl enable zabbix-agent && systemctl status zabbix-agent

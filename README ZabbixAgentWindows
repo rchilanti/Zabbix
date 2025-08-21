@@ -1,0 +1,20 @@
+Script para instalação automática em vários computadores/servidores windows
+
+Para que o script seja executado com sucesso:
+
+Criar pasta "C:\Temp\ZabbixAgent" no seu computador
+Criar o arquivo Hosts_ZabbixAgent.txt
+
+Adicionar os hostnames de todos computadores/servidores windows que deseja instalar, um abaixo do outro, ex:
+WDTC001
+WDTC002
+WDTC003
+
+Baixar o psexec e descompactar dentro da pasta C:\Temp
+O caminho do psexec deve ser esse: C:\Temp\PSTools\PsExec64.exe
+
+Com esses passos realizados, é só abrir o CMD como administrador e rodar o script
+
+
+
+

@@ -1,19 +1,26 @@
 Script para instalação automática em vários computadores/servidores windows
 
-Para que o script seja executado com sucesso:
+1 - Criar pasta "C:\Temp\" no seu computador
 
-Criar pasta "C:\Temp\ZabbixAgent" no seu computador
-Criar o arquivo Hosts_ZabbixAgent.txt
+2 - Efetuar o download do arquivo ZabbixAgentInstall-Windows.zip
 
-Adicionar os hostnames de todos computadores/servidores windows que deseja instalar, um abaixo do outro, ex:
-WDTC001
-WDTC002
-WDTC003
+3 - Mover o ZabbixAgentInstall-Windows.zip para a pasta C:\Temp
 
-Baixar o psexec e descompactar dentro da pasta C:\Temp
-O caminho do psexec deve ser esse: C:\Temp\PSTools\PsExec64.exe
+4 - Descompactar o zip
 
-Com esses passos realizados, é só abrir o CMD como administrador e rodar o script
+5 - Os arquivos Hosts_ZabbixAgent.txt, script_InstalaZabbixAgent.bat e zabbix_agent.zip devem ficar dentro de C:\temp\ZabbixAgent
+
+6 - Descompactar o PSTools.zip em C:\Temp\PSTools
+
+7 - Abrir o arquivo C:\temp\ZabbixAgent\Hosts_ZabbixAgent.txt e adicionar os hostnames dos computadores/servidores que deseja instalar o Zabbix Agent
+    Os hostnames devem ficar um baixo do outro, ex:
+    SRVPRD01
+    SRVPRD02
+
+7 - Abrir o CMD como administrador
+8 - Executar o script: c:\temp\ZabbixAgent\script_InstalaZabbixAgent.bat
+
+
 
 
 

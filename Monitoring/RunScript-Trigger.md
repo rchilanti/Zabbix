@@ -8,12 +8,16 @@ Procedimento para executar um script quando é disparado uma trigger
 
 
 2 - Reiniciar o serviço do Zabbix Agent
+
 systemctl restart zabbix-agent
 
     
 3 - Adicionar o usuario Zabbix como sudo
+
 visudo
+
 Adicionar a linha: zabbix ALL=NOPASSWD: ALL
+
 <img width="540" height="79" alt="image" src="https://github.com/user-attachments/assets/c6212182-0b42-4d07-a1d2-66ce322dee58" />
 
 

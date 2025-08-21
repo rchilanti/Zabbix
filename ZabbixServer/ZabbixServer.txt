@@ -1,0 +1,72 @@
+Zabbix Server com Apache no Ubuntu Server
+
+sudo apt update && sudo apt upgrade -y
+
+cd /opt
+
+wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-2+ubuntu24.04_all.deb
+dpkg -i zabbix-release_7.0-2+ubuntu24.04_all.deb
+apt update
+
+sudo apt install zabbix-server-pgsql zabbix-frontend-php php8.3-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent -y
+
+vim /etc/zabbix/zabbix_server.conf
+DBName=zabbix
+DBUser=zabbix
+DBPassword=C@a0jJ%U31C4
+DBHost=192.168.16.147
+
+
+systemctl restart zabbix-server zabbix-agent apache2
+systemctl enable zabbix-server zabbix-agent apache2
+
+
+http://ip/zabbix
+
+
+
+Acesso inicial
+Admin
+zabbix
+
+
+----SEGURANÇA NO ZABBIX----
+
+-----Trocar porta default do apache e criar porta para o Zabbix e trocar o DocummentRoot
+vim /etc/apache2/ports.conf
+
+Listen 33443
+
+ssl_module
+Listen 4433
+
+mod_gnutls.c
+Listen 4433
+
+ 
+vim /etc/apache2/sites-enabled/000-default.conf
+<VirtualHost *:33443>
+DocumentRoot /usr/share/zabbix
+ServerName zabbix.napit.com.br
+
+systemctl restart apache2
+
+
+----Certificado SSL
+
+criar endereço DNS zabbix.seudominio.com.br
+
+sudo snap install --classic certbot
+
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+
+sudo certbot --apache
+
+-----------------------
+OBS: VERIFIQUE A DATA E HORA DO SERVIDOR SE ESTAO SINCRONIZADOS COM NTP.br
+
+timedatectl set-timezone America/Sao_Paulo
+
+apt install -y ntpdate
+
+ntpdate -u a.st1.ntp.br

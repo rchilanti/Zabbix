@@ -23,23 +23,29 @@ Adicionar a linha: zabbix ALL=NOPASSWD: ALL
 
 
 ---Windows - Habilitar o system.run
+
 1 - No arquivo de configuração do Zabbix Agent (C:\zabbix_agent\conf\zabbix_agentd.conf), adicionar a linha AllowKey=system.run[*]
+
 <img width="908" height="173" alt="image" src="https://github.com/user-attachments/assets/c7b906a3-0676-416b-a683-0fe680f32911" />
 
 2 - Reiniciar serviço do Zabbix Agent
+
 <img width="258" height="246" alt="image" src="https://github.com/user-attachments/assets/b0f64d01-45aa-4477-8e44-ea655a14e640" />
 
 
 ---Na Console do Zabbix, acessar:
+
 -Alerts > Scripts > Create Script
 
 Exemplo:
+
 <img width="1037" height="488" alt="image" src="https://github.com/user-attachments/assets/dff9a2bf-ce35-4275-b358-98e28213f0d7" />
 
 
 -Alerts > Action Triggers > Criar a action
 
 Exemplo:
+
 <img width="1039" height="316" alt="image" src="https://github.com/user-attachments/assets/014246eb-3ed9-4f42-b266-39a78d7d8d6a" />
 
 

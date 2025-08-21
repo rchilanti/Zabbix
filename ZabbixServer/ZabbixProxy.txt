@@ -1,0 +1,85 @@
+Zabbix Proxy com Banco de Dados PostgreSQL em Ubuntu Server
+
+---Atualiza o SO e os pacotes
+sudo apt update && sudo apt upgrade -y
+
+---Instala o postgresql
+sudo apt install postgresql postgresql-contrib -y
+
+---Configura o postgresql
+sudo -u postgres psql
+
+\password postgres
+Digite nova senha para postgres: 92@hJD5sgZf4
+Digite-a novamente: 92@hJD5sgZf4
+
+CREATE EXTENSION adminpack;
+
+\q
+
+su - postgres
+createuser --pwprompt zabbix
+Digite a senha para a nova role:  C@a0jJ%U31C4
+Digite-a novamente: C@a0jJ%U31C4
+Senha: 92@hJD5sgZf4
+ 
+createdb -O zabbix zabbix
+Senha: 92@hJD5sgZf4
+
+
+sudo -u postgres psql
+Senha: 92@hJD5sgZf4
+GRANT ALL PRIVILEGES ON DATABASE zabbix to zabbix;
+FLUSH PRIVILEGES
+
+\q
+
+vim /etc/postgresql/16/main/postgresql.conf
+listen_addresses = '*'
+
+sed -i '/postgres.*peer/s/peer/md5/' /etc/postgresql/16/main/pg_hba.conf
+sed -i '0,/local\s*all\s*all\s*peer/s/peer/md5/' /etc/postgresql/16/main/pg_hba.conf
+
+vim /etc/postgresql/16/main/pg_hba.conf
+host    all             all              0.0.0.0/0                       md5
+host    all             all              ::/0                            md5
+host    all             all             0.0.0.0/0               scram-sha-256
+
+
+systemctl restart postgresql
+systemctl enable postgresql
+
+---Instala o respositorio do Zabbix
+wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-2+ubuntu24.04_all.deb
+dpkg -i zabbix-release_7.0-2+ubuntu24.04_all.deb
+apt update
+
+---Instala o zabbix proxy
+apt install zabbix-proxy-pgsql zabbix-sql-scripts -y
+
+cat /usr/share/zabbix-sql-scripts/postgresql/proxy.sql | psql -U zabbix -d zabbix
+password Zabbix: C@a0jJ%U31C4
+
+vim /etc/zabbix/zabbix_proxy.conf
+ProxyMode=0
+Server=192.168.16.155
+Hostname=zabbix_proxy
+LogFileSize=10
+DBHost=localhost
+DBName=zabbix
+DBUser=zabbix
+DBPassword=C@a0jJ%U31C4
+
+
+systemctl restart zabbix-proxy
+systemctl enable zabbix-proxy
+
+
+OBS: VERIFIQUE A DATA E HORA DO SERVIDOR SE ESTAO SINCRONIZADOS COM NTP.br
+
+timedatectl set-timezone America/Sao_Paulo
+
+apt install -y ntpdate
+
+ntpdate -u a.st1.ntp.br
+

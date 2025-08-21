@@ -51,7 +51,11 @@ Exemplo:
 Exemplo:
 
 <img width="1039" height="316" alt="image" src="https://github.com/user-attachments/assets/014246eb-3ed9-4f42-b266-39a78d7d8d6a" />
-
-
+<br>
+<br>
 <img width="1038" height="472" alt="image" src="https://github.com/user-attachments/assets/07e80ac4-6bc5-40e6-8058-bb8207fd60fb" />
-
+<br>
+<br>
+<img width="598" height="314" alt="image" src="https://github.com/user-attachments/assets/6db0fc62-b9dc-40f7-b07a-77b09700fcb4" />
+<br>
+<br>

@@ -12,9 +12,13 @@ az ad sp create-for-rbac --name zabbix --role reader --scope /subscriptions/<sub
 <br>
 Crie o host e adicione o template Azure by HTTP
 <img width="1039" height="542" alt="image" src="https://github.com/user-attachments/assets/d2872c4f-7af9-4a7d-8a67-693bc96a6c7a" />
-
-
+<br>
+<br>
+<br>
 Em Macros, adicione essas macros e seus valores de acordo com o resultado do comando executado no Cloud Shell
 <img width="1036" height="335" alt="image" src="https://github.com/user-attachments/assets/66530a83-ece4-453e-b8e4-980faacc83d5" />
-
-
+<br>
+<br>
+<br>
+Documentação Oficial:
+https://www.zabbix.com/integrations/azure

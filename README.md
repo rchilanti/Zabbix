@@ -1,2 +1,2 @@
 # Zabbix
-Install and Configura Zabbix Server, Zabbix Proxy and Zabbix Agent
+Install and Configure Zabbix Server, Zabbix Proxy and Zabbix Agent

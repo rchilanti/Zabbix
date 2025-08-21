@@ -1,3 +1,3 @@
 Abrir o arquivo ZabbixAgentInstall-Linux.txt e seguir o passo a passo.
 
-Obs: você deve estar logando dentro do linux que deseja monitorar e seguir os passos
+Obs: você deve estar logando como root dentro do linux que deseja monitorar e seguir os passos

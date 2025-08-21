@@ -32,3 +32,7 @@ vim-cmd hostsvc/hostsummary | grep uuid
 <img width="1046" height="466" alt="image" src="https://github.com/user-attachments/assets/857c7d31-8ea5-41a4-98e9-88347934f776" />
 
 
+Documentação Oficial:
+https://www.zabbix.com/documentation/7.0/en/manual/vm_monitoring/vmware_keys
+
+

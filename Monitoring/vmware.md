@@ -34,6 +34,10 @@ ajuste o formato do UUID para o padrão RFC 4122:
 
 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
+<br>
+<br>
+<br>
+
 ---Item Personalizado Estado da VM--- (Verifica se a VM está ligada ou desligada)
 
 Key: vmware.vm.state[{$VMWARE.URL},564dd80e-a288-dd08-ffbd-96a9a65b417f]

@@ -26,7 +26,7 @@ vim-cmd hostsvc/hostsummary | grep uuid
 
 Você vai precisar capturar o UUID da VM que deseja monitorar.
 
-Acesse o ESXI via SSH e executar o comando (alterando para o caminho completo da sua VM):
+Acesse o ESXI via SSH e execute o comando (alterando para o caminho completo da sua VM):
 
 cat /vmfs/volumes/datastore1/WinServer2022/WinServer2022.vmx | grep uuid.bios
 

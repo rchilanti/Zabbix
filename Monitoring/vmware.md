@@ -51,9 +51,11 @@ Key: vmware.vm.tools[{$VMWARE.URL},564dd80e-a288-dd08-ffbd-96a9a65b417f,status] 
 Expression: last(/VDTC001/vmware.vm.tools[{$VMWARE.URL},564dd80e-a288-dd08-ffbd-96a9a65b417f,status])="guestToolsnotRunning" <- altere para a UUID do seu ESXI
 
 <img width="1046" height="466" alt="image" src="https://github.com/user-attachments/assets/857c7d31-8ea5-41a4-98e9-88347934f776" />
-
-
+<br>
+<br>
+<br>
 Documentação Oficial:
+
 https://www.zabbix.com/documentation/7.0/en/manual/vm_monitoring/vmware_keys
 
 

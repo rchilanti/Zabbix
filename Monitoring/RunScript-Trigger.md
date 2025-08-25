@@ -1,4 +1,4 @@
-Procedimento para executar automáticamente um script quando é disparado uma trigger
+Procedimento para executar automaticamente um script quando é disparado uma trigger
 
 
 ---Linux - Habilitar o system.run e dar permissão de execução para o usuario zabbix, no zabbix agent do host

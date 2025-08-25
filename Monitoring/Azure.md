@@ -1,4 +1,4 @@
-Como monitorar sua Azure via API
+Procedimento de como monitorar sua Azure via API
 
 Acesse seu ambiente da Azure e execute o comando abaixo, via Cloud Shell, alterando para sua Subscription ID
 <br>

@@ -1,4 +1,4 @@
-Monitorar o VMware ESXi via template padrão VMware Hypervisor
+Procedimento de como Monitorar o VMware ESXi via template padrão VMware Hypervisor
 
 Configuração do host
 <img width="1046" height="468" alt="image" src="https://github.com/user-attachments/assets/ee51f0ed-39f8-413d-8bd9-56c5726f85f8" />
